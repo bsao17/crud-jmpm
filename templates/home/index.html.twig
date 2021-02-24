@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Junior-mais-pas-manchot{% endblock %}
+
+{% block body %}
+    <div class="card my-5 container" id="container">
+        <h2 class="text-center card-header m-0">
+            Dashboard JMPM<br>
+            <a href="https://jmpm-e70d2.web.app/"><code>Site Junior-Mais-Pas-Manchot</code></a>
+        </h2>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 d-flex justify-content-center">
+                    <img src="https://res.cloudinary.com/bsao17/image/upload/v1610179982/samples/JMPM/dev-junior_an6cc1.png" alt="logo JMPM">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+        {% if app.user %}
+            <div class="card-footer text-center">
+                <a href="{{ path('admin_controller') }}" class="btn btn-success">Dashboard</a>
+            </div>
+        {% else %}
+        <div class="card-footer text-center">
+            <img src="pictures/logo_apiplatform/logoapi.svg" class="w-25" alt="">
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

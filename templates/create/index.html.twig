@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="card-header rounded-top shadow">Créer votre article sur <cite>"Junior Mais Pas Manchot"</cite></h1>
+        <div class="form-group card p-3 bg-secondary text-light mb-5">
+            {{ form_start(formView) }}
+            {{ form_widget(formView) }}
+            <button type="submit" class="btn btn-danger my-3 border border-3 border-light">Créer votre article</button>
+            <a href="{{ path('admin_controller') }}" class="btn btn-success border border-3 border-light mx-3">Retour</a>
+            {{ form_help(formView) }}
+            {{ form_end(formView) }}
+
+        </div>
+    </div>
+
+
+{% endblock %}
