@@ -46,3 +46,4 @@ security:
          - { path: ^/create, roles: ROLE_USER }
          - { path: ^/isupdate, roles: ROLE_USER }
          - { path: ^/delete, roles: ROLE_USER }
+         - { path: ^/inscription, roles: ROLE_ADMIN }
