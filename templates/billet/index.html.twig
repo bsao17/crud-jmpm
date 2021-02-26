@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Billet index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container shadow border border-3 border-light p-0">
+            <h2 class="text-center card-header">Billet index</h2>
+
+            <table class="table">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Date</th>
+                        <th>Authors</th>
+                        <th>Picture</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for billet in billets %}
+                    <tr>
+                        <td class="bg-light">{{ billet.id }}</td>
+                        <td class="bg-light">{{ billet.title }}</td>
+                        <td class="bg-light">{{ billet.content }}</td>
+                        <td class="bg-light">{{ billet.date ? billet.date|date('Y-m-d') : '' }}</td>
+                        <td class="bg-light">{{ billet.authors }}</td>
+                        <td class="bg-light">{{ billet.picture }}</td>
+                        <td class="bg-light">
+                            <a href="{{ path('billet_show', {'id': billet.id}) }}" class="btn btn-sm btn-info">show</a>
+                            <a href="{{ path('billet_edit', {'id': billet.id}) }}" class="btn btn-sm btn-primary m-1">edit</a>
+                        </td>
+                {% else %}
+                    </tr>
+                    <tr>
+                        <td colspan="7">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('billet_new') }}" class="btn btn-sm btn-success m-1">Create new</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Billet{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center card-header">Billet</h2>
+
+        <table class="table m-0">
+            <tbody class="bg-light">
+                <tr>
+                    <th>Id</th>
+                    <td>{{ billet.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ billet.title }}</td>
+                </tr>
+                <tr>
+                    <th>Content</th>
+                    <td>{{ billet.content }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ billet.date ? billet.date|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Authors</th>
+                    <td>{{ billet.authors }}</td>
+                </tr>
+                <tr>
+                    <th>Picture</th>
+                    <td>{{ billet.picture }}</td>
+                </tr>
+            </tbody>
+        </table>
+    <div class="d-flex flex-column justify-content-around bg-light py-2">
+        <a href="{{ path('billet_index') }}" class="btn btn-sm btn-warning my-1">back to list</a>
+
+        <a href="{{ path('billet_edit', {'id': billet.id}) }}" class="btn btn-sm btn-info my-1">edit</a>
+    </div>
+        {{ include('billet/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

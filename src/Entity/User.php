@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -45,6 +47,16 @@ class User implements UserInterface
      * @Groups ({"user_read"})
      */
     private $username;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="user")
+     */
+    private $billet_id;
+
+    public function __construct()
+    {
+        $this->billet_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -129,5 +141,42 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Billet[]
+     */
+    public function getBilletId(): Collection
+    {
+        return $this->billet_id;
+    }
+
+    public function addBilletId(Billet $billetId): self
+    {
+        if (!$this->billet_id->contains($billetId)) {
+            $this->billet_id[] = $billetId;
+            $billetId->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBilletId(Billet $billetId): self
+    {
+        if ($this->billet_id->removeElement($billetId)) {
+            // set the owning side to null (unless already changed)
+            if ($billetId->getUser() === $this) {
+                $billetId->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->getUsername();
+        // to show the id of the Category in the select
+        // return $this->id;
     }
 }

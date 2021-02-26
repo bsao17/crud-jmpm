@@ -54,6 +54,11 @@ class Billet
      */
     private $picture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="billet_id")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,6 +119,18 @@ class Billet
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
