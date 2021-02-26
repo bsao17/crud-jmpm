@@ -18,12 +18,15 @@
                         <li class="nav-item">
                             <a class="nav-link btn btn-sm btn-danger mx-2" href="{{ path('security_logout') }}">Logout</a>
                         </li>
+                        <li class="nav-item">
+                            <a id="inscription" class="nav-link btn btn-sm btn-light mx-2" href="{{ path('security_inscription') }}">Inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="api" class="nav-link btn btn-sm btn-info mx-2" href="/api">APIplatform</a>
+                        </li>
                     {% else %}
                             <li class="nav-item">
                                 <a id="loginButton" class="nav-link active btn btn-sm btn-success mx-2" aria-current="page" href="/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="inscription" class="nav-link btn btn-sm btn-light mx-2" href="{{ path('security_inscription') }}">Inscription</a>
                             </li>
                     {% endif %}
 
