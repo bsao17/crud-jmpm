@@ -16,17 +16,14 @@ class User extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i<=2; $i++){
-            $user = new \App\Entity\User();
-            $user->setUsername('bsao17')
-                ->setPassword('123456')
-                ->setEmail('declic62@gmail.com')
-                ->setRoles((array)'ROLE_ADMIN');
-            $encoded = $this->encoder->encodePassword($user ,$user->getPassword());
-            $user->setPassword($encoded);
-            $manager->persist($user);
-
-        }
+        $user = new \App\Entity\User();
+        $user->setUsername('root')
+            ->setPassword('root')
+            ->setEmail('root@root.com')
+            ->setRoles((array)'ROLE_ADMIN');
+        $encoded = $this->encoder->encodePassword($user ,$user->getPassword());
+        $user->setPassword($encoded);
+        $manager->persist($user);
         $manager->flush();
     }
 }
