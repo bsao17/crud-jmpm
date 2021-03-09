@@ -14,12 +14,12 @@ class LoginType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Adresse email',
-                'attr' => ['placeholder'=>'votre email de connexion ici']
+                'label' => 'Your email',
+                'attr' => ['placeholder'=>'email']
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe',
-                'attr' => ['placeholder'=>'mot de passe']
+                'label' => 'Your password',
+                'attr' => ['placeholder'=>'password']
             ]);
 
     }

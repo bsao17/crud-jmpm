@@ -17,6 +17,8 @@ class BilletController extends AbstractController
 {
     /**
      * @Route("/", name="billet_index", methods={"GET"})
+     * @param BilletRepository $billetRepository
+     * @return Response
      */
     public function index(BilletRepository $billetRepository): Response
     {
@@ -27,6 +29,8 @@ class BilletController extends AbstractController
 
     /**
      * @Route("/new", name="billet_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,8 @@ class BilletController extends AbstractController
 
     /**
      * @Route("/{id}", name="billet_show", methods={"GET"})
+     * @param Billet $billet
+     * @return Response
      */
     public function show(Billet $billet): Response
     {
@@ -60,6 +66,9 @@ class BilletController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="billet_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Billet $billet
+     * @return Response
      */
     public function edit(Request $request, Billet $billet): Response
     {
